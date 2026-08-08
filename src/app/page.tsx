@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
 import { Connect } from "@/components/sections/Connect";
 import { Loader } from "@/components/layout/Loader";
@@ -93,6 +94,53 @@ export default function Home() {
         scrollTrigger: {
           trigger: "#projects",
           start: "top 70%",
+          end: "bottom 80%",
+          scrub: 1,
+        }
+      }
+    );
+
+    // 3. Scroll Animations for Skills Section
+    gsap.fromTo(".gsap-skills-header",
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#skills",
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 1,
+        }
+      }
+    );
+
+    gsap.fromTo(".gsap-skill-card",
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#skills",
+          start: "top 70%",
+          end: "bottom 85%",
+          scrub: 1,
+        }
+      }
+    );
+
+    gsap.fromTo(".gsap-skill-bar",
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        ease: "power2.out",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: "#skills",
+          start: "top 65%",
           end: "bottom 80%",
           scrub: 1,
         }
@@ -203,6 +251,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Projects />
+        <Skills />
         <Experience />
         <Connect />
         <Footer />

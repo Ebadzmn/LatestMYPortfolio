@@ -13,6 +13,7 @@ export function Navbar() {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 300; // Offset for detection
       const projects = document.getElementById("projects")?.offsetTop || Infinity;
+      const skills = document.getElementById("skills")?.offsetTop || Infinity;
       const experience = document.getElementById("experience")?.offsetTop || Infinity;
       const connect = document.getElementById("connect")?.offsetTop || Infinity;
 
@@ -20,6 +21,8 @@ export function Navbar() {
         setActiveSection("connect");
       } else if (scrollPos >= experience) {
         setActiveSection("experience");
+      } else if (scrollPos >= skills) {
+        setActiveSection("skills");
       } else if (scrollPos >= projects) {
         setActiveSection("projects");
       } else {
@@ -58,6 +61,12 @@ export function Navbar() {
           className={`gsap-nav transition-colors ${activeSection === "projects" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Projects
+        </a>
+        <a 
+          href="#skills" 
+          className={`gsap-nav transition-colors ${activeSection === "skills" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
+        >
+          Skills
         </a>
         <a 
           href="#experience" 
