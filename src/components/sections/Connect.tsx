@@ -20,14 +20,14 @@ export function Connect() {
   const [message, setMessage] = useState("");
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("ebaduzzaman.ebad@gmail.com");
+    navigator.clipboard.writeText("ebadzmn1@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:ebaduzzaman.ebad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = `mailto:ebadzmn1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -56,7 +56,7 @@ export function Connect() {
               CONTACT INFORMATICS
             </h3>
             <div className="flex items-center justify-between bg-white border border-zinc-200 p-3 rounded-sm">
-              <span className="font-bold text-zinc-900 text-sm tracking-wide">ebaduzzaman.ebad@gmail.com</span>
+              <span className="font-bold text-zinc-900 text-sm tracking-wide">ebadzmn1@gmail.com</span>
               <button 
                 onClick={handleCopy}
                 className="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 rounded-sm transition-colors relative"

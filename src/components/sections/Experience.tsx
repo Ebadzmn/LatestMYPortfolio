@@ -3,9 +3,16 @@ import { Cpu, Database, Server, Smartphone, Layers, LayoutTemplate } from "lucid
 
 const experiences = [
   {
+    role: "EXECUTIVE MOBILE APP DEVELOPER",
+    company: "SPARKTECH AGENCY",
+    period: "OCT 2025 - PRESENT",
+    description: "Architecting and maintaining production-grade cross-platform mobile applications using Flutter and Dart for iOS & Android. Implemented Clean Architecture with BLoC state management, integrated REST APIs, Firebase services, push notifications, and executed full-cycle debugging for high-availability production releases.",
+    tags: ["Flutter", "Dart", "BLoC", "Clean Architecture", "Firebase", "REST APIs"],
+  },
+  {
     role: "SENIOR FLUTTER ENGINEER",
     company: "TECH CORP",
-    period: "2023 - PRESENT",
+    period: "2023 - 2025",
     description: "Leading the mobile development team. Architected a multi-platform app scaling to 1M+ active users. Implemented modular architecture and custom state management solutions using Riverpod and Freezed.",
     tags: ["Flutter", "Dart", "Riverpod", "CI/CD"],
   },
