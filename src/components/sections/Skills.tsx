@@ -1,146 +1,128 @@
 "use client";
 
 import { Badge } from "@/components/ui/Badge";
-import { Smartphone, Layers, Server, LayoutTemplate, Cpu, Code2, Zap } from "lucide-react";
+import { 
+  Smartphone, Layers, Server, LayoutTemplate, 
+  Cpu, Code2, Zap, Sparkles, Terminal, 
+  Database, Palette, GitBranch 
+} from "lucide-react";
 
-interface SkillCategory {
-  title: string;
-  icon: React.ReactNode;
-  description: string;
-  skills: { name: string; level: number; tag: string }[];
-}
+const coreSkills = [
+  { name: "Flutter SDK", level: 95, icon: <Smartphone className="w-4 h-4" /> },
+  { name: "Dart Language", level: 92, icon: <Code2 className="w-4 h-4" /> },
+  { name: "Riverpod / BLoC", level: 94, icon: <Layers className="w-4 h-4" /> },
+  { name: "Firebase Suite", level: 91, icon: <Database className="w-4 h-4" /> },
+  { name: "REST & GraphQL", level: 88, icon: <Server className="w-4 h-4" /> },
+  { name: "Custom UI Paint", level: 90, icon: <Palette className="w-4 h-4" /> },
+  { name: "CI/CD Pipelines", level: 85, icon: <GitBranch className="w-4 h-4" /> },
+  { name: "Native Channels", level: 83, icon: <Terminal className="w-4 h-4" /> },
+];
 
-const skillCategories: SkillCategory[] = [
-  {
-    title: "Cross-Platform & Mobile",
-    icon: <Smartphone className="w-5 h-5 text-zinc-900" />,
-    description: "Building production-grade Android & iOS applications with fluid 60fps UIs.",
-    skills: [
-      { name: "Flutter SDK", level: 95, tag: "Primary Core" },
-      { name: "Dart Language", level: 92, tag: "Advanced" },
-      { name: "Android Native (Kotlin)", level: 85, tag: "Platform Channel" },
-      { name: "iOS Native (Swift)", level: 80, tag: "Integration" },
-    ],
-  },
-  {
-    title: "Architecture & State",
-    icon: <Layers className="w-5 h-5 text-zinc-900" />,
-    description: "Structuring scalable, testable, and maintainable cross-platform codebases.",
-    skills: [
-      { name: "Riverpod & BLoC Pattern", level: 94, tag: "State Arch" },
-      { name: "Clean Architecture", level: 90, tag: "Design Pattern" },
-      { name: "Freezed & Code Gen", level: 88, tag: "Immutable" },
-      { name: "SQLite & Hive Storage", level: 85, tag: "Offline First" },
-    ],
-  },
-  {
-    title: "Backend & Cloud Services",
-    icon: <Server className="w-5 h-5 text-zinc-900" />,
-    description: "Integrating real-time data feeds, authentication, cloud services and APIs.",
-    skills: [
-      { name: "Firebase & Firestore", level: 92, tag: "BaaS" },
-      { name: "REST & GraphQL APIs", level: 88, tag: "Data Fetching" },
-      { name: "WebSockets Telemetry", level: 86, tag: "Real-Time" },
-      { name: "Stripe Payment Gateway", level: 84, tag: "Fintech" },
-    ],
-  },
-  {
-    title: "UI/UX & Engineering Tools",
-    icon: <LayoutTemplate className="w-5 h-5 text-zinc-900" />,
-    description: "Pixel-perfect screen implementation, custom painters, and DevOps pipelines.",
-    skills: [
-      { name: "Custom Canvas Painters", level: 90, tag: "Graphics" },
-      { name: "Figma to Flutter UI", level: 95, tag: "Pixel-Perfect" },
-      { name: "Git & GitHub CI/CD", level: 88, tag: "DevOps" },
-      { name: "Xcode & Android Studio", level: 90, tag: "Tooling" },
-    ],
-  },
+const toolboxItems = [
+  "Flutter", "Dart", "Firebase", "Riverpod", "BLoC", "Provider",
+  "GraphQL", "WebSockets", "SQLite", "Hive", "Freezed", "GetX",
+  "Stripe SDK", "Google Maps", "HealthKit", "Bluetooth LE",
+  "Android Studio", "Xcode", "VS Code", "Figma", "Git",
+  "Docker", "Fastlane", "Codemagic", "GitHub Actions",
 ];
 
 export function Skills() {
   return (
     <section className="py-24 relative z-10 w-full" id="skills">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8 gsap-skills-header">
+
+      {/* ─── HEADER ─── */}
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-20 gsap-skills-header">
         <div className="max-w-2xl">
-          <Badge className="mb-4 bg-transparent border-none px-0 shadow-none text-zinc-400">
+          <Badge className="mb-6 bg-transparent border-none px-0 shadow-none text-zinc-400">
             <span className="w-1.5 h-1.5 rounded-full bg-zinc-900"></span>
-            TECHNICAL COMPETENCY // CORE SKILLS
+            TECHNICAL DNA // ENGINEERING STACK
           </Badge>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-            Engineering Capabilities <br />
-            <span className="text-zinc-400">& Technology Stack</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.05]">
+            Tools I use to build
+            <span className="text-zinc-400 block">extraordinary things.</span>
           </h2>
         </div>
-        <p className="text-zinc-500 text-sm leading-relaxed max-w-md">
-          Specializing in Flutter & Dart ecosystem with deep expertise in state architecture, 
-          custom animations, platform channels, and offline-first database solutions.
+        <p className="text-zinc-500 text-sm leading-relaxed max-w-sm lg:text-right">
+          4+ years deep in the Flutter ecosystem. Every bar represents real production experience, not tutorial completions.
         </p>
       </div>
 
-      {/* Grid of Skill Categories */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {skillCategories.map((category, idx) => (
-          <div
-            key={category.title}
-            className="gsap-skill-card border border-zinc-200 bg-white p-8 md:p-10 rounded-sm relative overflow-hidden group hover:border-zinc-900 hover:shadow-xl transition-all duration-500"
-          >
-            {/* Top Border Accent */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-zinc-900 via-zinc-400 to-zinc-200 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+      {/* ─── MAIN CONTENT: 2-COLUMN LAYOUT ─── */}
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
 
-            {/* Category Header */}
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-sm bg-zinc-100 border border-zinc-200 flex items-center justify-center group-hover:bg-zinc-900 group-hover:text-white transition-all duration-500 shrink-0">
-                {category.icon}
-              </div>
-              <div>
-                <h3 className="text-xl font-bold tracking-tight">{category.title}</h3>
-                <p className="text-xs text-zinc-400 font-medium">{category.description}</p>
-              </div>
-            </div>
-
-            {/* List of Skills with Animated Progress Bars */}
-            <div className="space-y-6 pt-4 border-t border-zinc-100">
-              {category.skills.map((skill) => (
-                <div key={skill.name} className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
-                    <span className="text-zinc-800 flex items-center gap-2">
-                      <Zap className="w-3 h-3 text-zinc-400" />
-                      {skill.name}
+        {/* LEFT: Skill Bars */}
+        <div className="lg:w-3/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+            {coreSkills.map((skill, idx) => (
+              <div key={skill.name} className="gsap-skill-card group">
+                {/* Skill Label */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-8 h-8 rounded-sm bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-600 group-hover:bg-zinc-900 group-hover:text-white group-hover:border-zinc-900 transition-all duration-400">
+                      {skill.icon}
                     </span>
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] text-zinc-400 font-mono font-medium border border-zinc-200 px-2 py-0.5 rounded-sm">
-                        {skill.tag}
-                      </span>
-                      <span className="font-mono text-zinc-900">{skill.level}%</span>
-                    </div>
+                    <span className="text-sm font-bold tracking-tight">{skill.name}</span>
                   </div>
+                  <span className="text-xs font-mono font-bold text-zinc-400 group-hover:text-zinc-900 transition-colors">
+                    {skill.level}%
+                  </span>
+                </div>
 
-                  {/* Progress Bar Container */}
-                  <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden p-0.5 border border-zinc-200/60">
-                    <div
-                      className="gsap-skill-bar h-full bg-zinc-900 rounded-full transform origin-left transition-all duration-1000 ease-out group-hover:bg-gradient-to-r group-hover:from-zinc-900 group-hover:to-zinc-600"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+                {/* Progress Track */}
+                <div className="w-full h-2.5 bg-zinc-100 rounded-full overflow-hidden border border-zinc-200/60">
+                  <div
+                    className="gsap-skill-bar h-full rounded-full bg-zinc-900 origin-left relative overflow-hidden"
+                    style={{ width: `${skill.level}%` }}
+                  >
+                    {/* Shimmer effect on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Interactive Bottom Banner */}
-      <div className="mt-12 p-8 border border-zinc-200 bg-zinc-50/80 rounded-sm flex flex-col md:flex-row items-center justify-between gap-6 gsap-skills-footer">
-        <div className="flex items-center gap-4">
-          <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-          <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider">Continuous Learning & R&D</h4>
-            <p className="text-xs text-zinc-500 mt-0.5">Exploring WebAssembly, Flutter GPU painters, Rust FFI, and AI-assisted state management.</p>
+          {/* Stack Score Footer */}
+          <div className="mt-12 flex items-center gap-4 pt-8 border-t border-zinc-100 gsap-skills-footer">
+            <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shrink-0"></div>
+            <div>
+              <h4 className="font-bold text-sm tracking-tight">Production Readiness Index</h4>
+              <p className="text-xs text-zinc-400 mt-0.5">Actively exploring: Rust FFI, WebAssembly, Shorebird Code Push</p>
+            </div>
+            <span className="ml-auto text-2xl font-bold font-mono tracking-tight text-zinc-900">98.4<span className="text-zinc-300 text-lg">%</span></span>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400">
-          <span>STACK SCORE: 98.4% OPTIMIZED</span>
+
+        {/* RIGHT: Interactive Toolbox Cloud */}
+        <div className="lg:w-2/5">
+          <div className="border border-zinc-200 bg-white rounded-sm p-8 h-full relative overflow-hidden gsap-skill-card">
+            {/* Decorative corner */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-zinc-100 to-transparent pointer-events-none"></div>
+            
+            <div className="flex items-center gap-3 mb-8 relative z-10">
+              <div className="w-10 h-10 rounded-sm bg-zinc-900 text-white flex items-center justify-center">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold tracking-tight">Complete Toolbox</h3>
+                <p className="text-xs text-zinc-400">{toolboxItems.length} technologies & tools</p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 relative z-10">
+              {toolboxItems.map((item, idx) => (
+                <span
+                  key={item}
+                  className="gsap-toolbox-tag px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider border border-zinc-200 rounded-sm text-zinc-600 bg-zinc-50 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all duration-300 cursor-default select-none"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* Bottom gradient fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+          </div>
         </div>
       </div>
     </section>

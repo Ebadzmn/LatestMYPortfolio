@@ -70,52 +70,52 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
         "-=0.8"
       );
 
-    // Scroll-triggered animations
+    // Scroll-triggered animations - instant reveal on entering viewport
     gsap.fromTo(".gsap-challenge",
-      { y: 50, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
-        y: 0, opacity: 1, ease: "none",
-        scrollTrigger: { trigger: ".gsap-challenge", start: "top 85%", end: "top 55%", scrub: 1 }
+        y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+        scrollTrigger: { trigger: ".gsap-challenge", start: "top 92%", toggleActions: "play none none none" }
       }
     );
 
     gsap.fromTo(".gsap-solution",
-      { y: 50, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
-        y: 0, opacity: 1, ease: "none",
-        scrollTrigger: { trigger: ".gsap-solution", start: "top 85%", end: "top 55%", scrub: 1 }
+        y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+        scrollTrigger: { trigger: ".gsap-solution", start: "top 92%", toggleActions: "play none none none" }
       }
     );
 
     gsap.fromTo(".gsap-result-item",
-      { y: 40, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
-        y: 0, opacity: 1, stagger: 0.1, ease: "none",
-        scrollTrigger: { trigger: ".gsap-results", start: "top 85%", end: "top 55%", scrub: 1 }
+        y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out",
+        scrollTrigger: { trigger: ".gsap-results", start: "top 90%", toggleActions: "play none none none" }
       }
     );
 
     gsap.fromTo(".gsap-content-block",
-      { y: 40, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
-        y: 0, opacity: 1, ease: "none",
-        scrollTrigger: { trigger: ".gsap-content-block", start: "top 85%", end: "top 55%", scrub: 1 }
+        y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+        scrollTrigger: { trigger: ".gsap-content-block", start: "top 90%", toggleActions: "play none none none" }
       }
     );
 
     gsap.fromTo(".gsap-next-project",
-      { y: 60, opacity: 0 },
+      { y: 40, opacity: 0 },
       {
-        y: 0, opacity: 1, ease: "none",
-        scrollTrigger: { trigger: ".gsap-next-project", start: "top 90%", end: "top 65%", scrub: 1 }
+        y: 0, opacity: 1, duration: 0.6, ease: "power3.out",
+        scrollTrigger: { trigger: ".gsap-next-project", start: "top 92%", toggleActions: "play none none none" }
       }
     );
 
     gsap.fromTo(".gsap-footer",
       { opacity: 0 },
       {
-        opacity: 1, ease: "none",
-        scrollTrigger: { trigger: "footer", start: "top 95%", end: "bottom bottom", scrub: 1 }
+        opacity: 1, duration: 0.6, ease: "power3.out",
+        scrollTrigger: { trigger: "footer", start: "top 95%", toggleActions: "play none none none" }
       }
     );
 
@@ -186,7 +186,7 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 gsap-hero-desc">
+            <div className="flex flex-wrap items-center gap-3 gsap-hero-desc">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
@@ -195,6 +195,18 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
                   {tag}
                 </span>
               ))}
+
+              {project.appStoreUrl && (
+                <a
+                  href={project.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white bg-zinc-900 border border-zinc-900 px-5 py-2 rounded-sm hover:bg-black transition-all duration-300 shadow-md group"
+                >
+                  View on App Store
+                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              )}
             </div>
           </div>
 

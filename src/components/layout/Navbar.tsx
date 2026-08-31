@@ -11,7 +11,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 300; // Offset for detection
+      const scrollPos = window.scrollY + 300;
       const projects = document.getElementById("projects")?.offsetTop || Infinity;
       const skills = document.getElementById("skills")?.offsetTop || Infinity;
       const experience = document.getElementById("experience")?.offsetTop || Infinity;
@@ -31,7 +31,6 @@ export function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Initial check
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -50,35 +49,41 @@ export function Navbar() {
       </div>
 
       <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500 uppercase tracking-widest">
-        <a 
-          href="#" 
+        <a
+          href="#"
           className={`gsap-nav transition-colors ${activeSection === "welcome" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Welcome
         </a>
-        <a 
-          href="#projects" 
+        <a
+          href="#projects"
           className={`gsap-nav transition-colors ${activeSection === "projects" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Projects
         </a>
-        <a 
-          href="#skills" 
+        <a
+          href="#skills"
           className={`gsap-nav transition-colors ${activeSection === "skills" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Skills
         </a>
-        <a 
-          href="#experience" 
+        <a
+          href="#experience"
           className={`gsap-nav transition-colors ${activeSection === "experience" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Experience
         </a>
-        <a 
-          href="#connect" 
+        <a
+          href="#connect"
           className={`gsap-nav transition-colors ${activeSection === "connect" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
         >
           Connect
+        </a>
+        <a
+          href="/test"
+          className={`gsap-nav transition-colors ${activeSection === "test" ? "text-zinc-900 border-b-2 border-zinc-900 pb-1" : "hover:text-zinc-900"}`}
+        >
+          Test
         </a>
       </nav>
 

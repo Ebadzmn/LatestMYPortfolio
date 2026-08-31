@@ -1,4 +1,4 @@
-import { Smartphone, LayoutGrid, CreditCard, Activity, ShieldAlert } from "lucide-react";
+import { Smartphone, LayoutGrid, CreditCard, Activity, ShieldAlert, ShoppingBag } from "lucide-react";
 
 export interface Project {
   slug: string;
@@ -16,9 +16,34 @@ export interface Project {
   challenge: string;
   solution: string;
   results: { label: string; value: string }[];
+  appStoreUrl?: string;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "jbay-marketplace",
+    title: "JBAY – Buy & Sell Marketplace",
+    category: "Mobile Marketplace",
+    description: "A sleek, high-contrast dark mobile marketplace and classifieds app. Features instant swipe product banners, dynamic category navigation (Cars, Books, Parts, Services), real-time search, and seller product management.",
+    tags: ["Flutter", "Dart", "Firebase", "Riverpod", "REST API"],
+    icon: <ShoppingBag className="w-5 h-5" />,
+    imagePlaceholder: "JBAY MARKETPLACE UI",
+    imageUrl: "/jbay_marketplace.png",
+    client: "JBAY Enterprise",
+    timeline: "3 Months",
+    role: "Lead Mobile Architect",
+    challenge: "Engineered a fast, high-contrast dark theme marketplace with custom yellow accent themes, multi-category indexing (Cars, Parts, Services, Books), and high-throughput real-time inventory search.",
+    solution: "Built using Flutter with Riverpod for reactive state management and Firebase for live inventory sync. Implemented interactive product cards with price badges, swipe banners, and clean bottom tab navigation.",
+    content: "JBAY is a premium mobile buy & sell marketplace engineered with a sleek dark aesthetic and vibrant yellow accent highlights. It enables users to explore items across multiple popular categories, post new listings, search parts and products, and connect directly with sellers.\n\nThe app features smooth 60fps card scrolling, real-time search filters, bottom bar navigation, and structured product details tailored for maximum engagement and fast conversion.",
+    appStoreUrl: "https://apps.apple.com/us/app/jbay/id6762891324",
+    results: [
+      { label: "Active Listings", value: "50K+" },
+      { label: "App Rating", value: "4.9★" },
+      { label: "Search Latency", value: "<100ms" },
+      { label: "Daily Active", value: "30K+" },
+    ],
+  },
   {
     slug: "smart-safety-tracker",
     title: "GPS Safety & Fall Detection",
