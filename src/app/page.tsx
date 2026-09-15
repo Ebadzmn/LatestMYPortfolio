@@ -195,18 +195,6 @@ export default function Home() {
       }
     );
 
-    // Timeline draw animation
-    gsap.to(".gsap-timeline-line", {
-      scaleY: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".gsap-timeline-line",
-        start: "top 85%",
-        toggleActions: "play none none none",
-      }
-    });
-
     gsap.fromTo(".gsap-exp-item",
       { x: 30, opacity: 0 },
       {

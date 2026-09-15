@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useClock } from "@/hooks/useClock";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 
 export function Navbar() {
   const time = useClock();
@@ -38,15 +39,13 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm flex justify-between items-center py-4 border-b border-zinc-100/50 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
-      <div className="flex items-center gap-3 gsap-nav">
-        <div className="w-8 h-8 bg-zinc-900 text-white flex items-center justify-center font-bold text-xl rounded-sm">
-          H
-        </div>
+      <a href="#" className="flex items-center gap-3 gsap-nav group cursor-pointer">
+        <Logo className="w-9 h-9" />
         <div>
-          <h1 className="font-bold tracking-tight text-sm uppercase">Ebaduzzaman Ebad</h1>
+          <h1 className="font-bold tracking-tight text-sm uppercase group-hover:text-zinc-600 transition-colors">Ebaduzzaman Ebad</h1>
           <p className="text-zinc-400 text-xs tracking-widest uppercase">Flutter Developer</p>
         </div>
-      </div>
+      </a>
 
       <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-500 uppercase tracking-widest">
         <a
