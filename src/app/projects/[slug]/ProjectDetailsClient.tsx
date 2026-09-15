@@ -10,6 +10,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { projects, type Project } from "@/data/projects";
 
+function AppleIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.78 1.06-1.85.94-2.94-.93.04-2.03.63-2.68 1.4-.58.67-.99 1.76-.87 2.82 1.04.08 2.08-.55 2.61-1.28z" />
+    </svg>
+  );
+}
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function ProjectDetailsClient({ project }: { project: Project }) {
@@ -201,10 +209,15 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
                   href={project.appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white bg-zinc-900 border border-zinc-900 px-5 py-2 rounded-sm hover:bg-black transition-all duration-300 shadow-md group"
+                  className="inline-flex items-center gap-3 bg-black hover:bg-zinc-900 text-white px-5 py-2.5 rounded-xl border border-zinc-700/80 shadow-xl hover:shadow-2xl hover:border-zinc-500 transition-all duration-300 group hover:scale-105"
+                  title="Download on the Apple App Store"
                 >
-                  View on App Store
-                  <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <AppleIcon className="w-6 h-6 fill-current text-white shrink-0 group-hover:scale-110 transition-transform" />
+                  <div className="flex flex-col text-left leading-none">
+                    <span className="text-[9px] text-zinc-400 font-medium uppercase tracking-wider">Download on the</span>
+                    <span className="text-sm md:text-base font-bold tracking-tight text-white mt-0.5">App Store</span>
+                  </div>
+                  <ExternalLink className="w-4 h-4 ml-1 text-zinc-400 group-hover:text-white transition-colors" />
                 </a>
               )}
             </div>
@@ -225,10 +238,23 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
               </div>
             </div>
 
-            <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-zinc-900/90 text-white backdrop-blur-md px-4 py-2 rounded-sm border border-zinc-700/80 z-10 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Live Project Mockup</span>
-            </div>
+            {project.appStoreUrl ? (
+              <a
+                href={project.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-6 right-6 flex items-center gap-2.5 bg-black/90 hover:bg-black text-white backdrop-blur-md px-4 py-2.5 rounded-xl border border-zinc-600 hover:border-white transition-all shadow-xl hover:scale-105 z-10 group/live"
+              >
+                <AppleIcon className="w-4 h-4 fill-current text-white group-hover/live:scale-110 transition-transform" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-white">Download on iOS</span>
+                <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover/live:text-white" />
+              </a>
+            ) : (
+              <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-zinc-900/90 text-white backdrop-blur-md px-4 py-2 rounded-sm border border-zinc-700/80 z-10 shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Live Project Mockup</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -346,7 +372,7 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
             <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6">
               Technology Stack
             </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-6">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
@@ -356,6 +382,30 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
                 </span>
               ))}
             </div>
+
+            {project.appStoreUrl && (
+              <div className="pt-6 border-t border-zinc-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 rounded-lg border shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-950 flex items-center justify-center text-white">
+                    <AppleIcon className="w-5 h-5 fill-current" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-zinc-900">Try it on your iPhone / iPad</h4>
+                    <p className="text-xs text-zinc-500">Official release available on the Apple App Store</p>
+                  </div>
+                </div>
+                <a
+                  href={project.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-black text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow hover:scale-105 shrink-0"
+                >
+                  <AppleIcon className="w-4 h-4 fill-current" />
+                  <span>Download App</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
 
