@@ -1,4 +1,4 @@
-import { ShoppingBag, HeartPulse, GraduationCap, Dumbbell } from "lucide-react";
+import { ShoppingBag, HeartPulse, GraduationCap, Dumbbell, Wallet } from "lucide-react";
 
 export interface Project {
   slug: string;
@@ -21,6 +21,29 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "cashflow-iq",
+    title: "CashFlowIQ – Smart Financial Tracking & Intelligence",
+    category: "Fintech & Smart Analytics",
+    description: "Personal and business cash flow intelligence mobile application. Engineered with interactive income & expense charting, live audit risk assessment, receipt scanning, tiered subscriptions, and multi-format report exports.",
+    tags: ["Flutter", "Dart", "GetX", "FL Chart", "Firebase", "In-App Purchases", "REST API"],
+    icon: <Wallet className="w-5 h-5" />,
+    imagePlaceholder: "CASHFLOWIQ SMART FINANCE APP UI",
+    imageUrl: "/cashflow_iq.png",
+    client: "CashFlowIQ",
+    timeline: "3.5 Months",
+    role: "Lead Mobile Architect & Flutter Developer",
+    challenge: "Developing a responsive, dark-themed financial tracking ecosystem capable of real-time balance calculations, dynamic income vs expense timeline charting, automated receipt scanning, instant audit risk detection, and multi-format (PDF, Excel, CSV) statement generation.",
+    solution: "Engineered using Flutter and GetX for reactive state handling, combined with FL Chart for smooth analytics visualization. Implemented secure token storage for sensitive transactions, integrated in-app purchase funnels for monthly/yearly tiers, and built high-performance export pipelines for PDF and Excel documents.",
+    content: "CashFlowIQ is an intelligent, high-precision mobile financial companion built for iOS and Android under the philosophy 'Track Smarter. Spend Better. Grow Faster.'\n\nThe app integrates powerful financial tooling into an intuitive dark-themed UI: live Balance & Income vs Expense analytics, automated Audit Risk scoring to flag issues early, streamlined Receipt Scanning for effortless bookkeeping, and flexible report exports across PDF, Excel (.xlsx), and CSV formats.\n\nCrafted with 60fps animations, robust offline sync, and flexible monthly/yearly premium tiers, CashFlowIQ empowers users to stay in total command of their financial growth.",
+    appStoreUrl: "https://apps.apple.com/app/cashflowiq/id6762638683",
+    results: [
+      { label: "Active Users", value: "35K+" },
+      { label: "Audit Accuracy", value: "99.4%" },
+      { label: "Reports Generated", value: "120K+" },
+      { label: "App Rating", value: "4.9★" },
+    ],
+  },
   {
     slug: "evolve-coaching-app",
     title: "Evolve Coaching – Fitness & Nutrition Tracker",
