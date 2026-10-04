@@ -14,6 +14,14 @@ function AppleIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   );
 }
 
+function PlayStoreIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.22 2.22 0 0 1-.61-1.573V3.387c0-.59.22-1.154.609-1.573zm11.238 11.241l2.42 2.42-12.022 6.942 9.602-9.362zm0-2.11L5.245 1.583 17.267 8.525l-2.42 2.42zm1.055 1.055l3.297-1.904a2.223 2.223 0 0 1 0 3.808l-3.297-1.904z" />
+    </svg>
+  );
+}
+
 export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -87,18 +95,35 @@ export function Projects() {
                     </span>
                   </div>
 
-                  {project.appStoreUrl ? (
-                    <a
-                      href={project.appStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pointer-events-auto inline-flex items-center gap-2 bg-white text-zinc-950 hover:bg-zinc-100 px-3 py-1.5 rounded-full text-xs font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white"
-                      title="Download on Apple App Store"
-                    >
-                      <AppleIcon className="w-3.5 h-3.5 fill-current" />
-                      <span>Download</span>
-                      <ArrowUpRight className="w-3 h-3 text-zinc-600" />
-                    </a>
+                  {project.appStoreUrl || project.playStoreUrl ? (
+                    <div className="pointer-events-auto flex items-center gap-1.5">
+                      {project.appStoreUrl && (
+                        <a
+                          href={project.appStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 bg-white text-zinc-950 hover:bg-zinc-100 px-2.5 py-1.5 rounded-full text-xs font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white"
+                          title="Download on Apple App Store"
+                        >
+                          <AppleIcon className="w-3.5 h-3.5 fill-current" />
+                          <span className="text-[11px]">iOS</span>
+                          <ArrowUpRight className="w-3 h-3 text-zinc-600" />
+                        </a>
+                      )}
+                      {project.playStoreUrl && (
+                        <a
+                          href={project.playStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 bg-white text-zinc-950 hover:bg-zinc-100 px-2.5 py-1.5 rounded-full text-xs font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-white"
+                          title="Download on Google Play Store"
+                        >
+                          <PlayStoreIcon className="w-3.5 h-3.5 fill-current text-zinc-900" />
+                          <span className="text-[11px]">Play</span>
+                          <ArrowUpRight className="w-3 h-3 text-zinc-600" />
+                        </a>
+                      )}
+                    </div>
                   ) : (
                     <Link
                       href={`/projects/${project.slug}`}
@@ -124,7 +149,7 @@ export function Projects() {
                   </p>
                 </div>
 
-                {/* Bottom Row: Tags & Prominent App Store Download / Metrics */}
+                {/* Bottom Row: Tags & Prominent Store Download / Metrics */}
                 <div className="pt-3 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-3">
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-1.5">
@@ -143,26 +168,41 @@ export function Projects() {
                     )}
                   </div>
 
-                  {/* Highlight Action / App Store Button */}
-                  <div className="flex items-center gap-2">
-                    {project.appStoreUrl ? (
+                  {/* Highlight Action / Store Buttons */}
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {project.appStoreUrl && (
                       <a
                         href={project.appStoreUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/90 px-3 py-1.5 rounded-lg transition-all duration-300 hover:border-zinc-500 shadow-sm group/btn"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/90 px-2.5 py-1.5 rounded-lg transition-all duration-300 hover:border-zinc-500 shadow-sm group/btn"
+                        title="Apple App Store"
                       >
                         <AppleIcon className="w-3.5 h-3.5 fill-current text-white group-hover/btn:scale-110 transition-transform" />
                         <span>App Store</span>
                         <ArrowUpRight className="w-3 h-3 text-zinc-400 group-hover/btn:text-white" />
                       </a>
-                    ) : project.results.length > 0 ? (
+                    )}
+                    {project.playStoreUrl && (
+                      <a
+                        href={project.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/90 px-2.5 py-1.5 rounded-lg transition-all duration-300 hover:border-zinc-500 shadow-sm group/btn"
+                        title="Google Play Store"
+                      >
+                        <PlayStoreIcon className="w-3.5 h-3.5 fill-current text-white group-hover/btn:scale-110 transition-transform" />
+                        <span>Play Store</span>
+                        <ArrowUpRight className="w-3 h-3 text-zinc-400 group-hover/btn:text-white" />
+                      </a>
+                    )}
+                    {!project.appStoreUrl && !project.playStoreUrl && project.results.length > 0 && (
                       <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 rounded-md">
                         <Sparkles className="w-3 h-3" />
                         <span>{project.results[0].label}:</span>
                         <span className="text-white font-bold">{project.results[0].value}</span>
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               </div>

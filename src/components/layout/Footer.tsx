@@ -14,10 +14,36 @@ export function Footer() {
         2026 EBADUZZAMAN EBAD
       </div>
 
+      <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+        <a 
+          href="https://github.com/ebadzmn" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="hover:text-zinc-900 transition-colors"
+        >
+          GitHub
+        </a>
+        <span className="text-zinc-300">•</span>
+        <a 
+          href="https://www.linkedin.com/in/ebaduzzaman-ebad/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="hover:text-zinc-900 transition-colors"
+        >
+          LinkedIn
+        </a>
+        <span className="text-zinc-300">•</span>
+        <a 
+          href="https://drive.google.com/file/d/1rNErwdeqlBfOWh6ihjsrxsRHPFvJ1aYU/view?usp=sharing" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="hover:text-zinc-900 transition-colors"
+        >
+          Resume / CV
+        </a>
+      </div>
+
       <div className="flex items-center gap-6 relative">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 hidden sm:inline-block">
-          BUILT WITH CLEAN MINIMALISM DESIGN
-        </span>
         <button 
           onClick={scrollToTop}
           className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-900 hover:text-zinc-500 transition-colors group z-10"

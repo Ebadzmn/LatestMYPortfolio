@@ -1,4 +1,4 @@
-import { ShoppingBag, HeartPulse, GraduationCap, Dumbbell, Wallet } from "lucide-react";
+import { ShoppingBag, HeartPulse, GraduationCap, Dumbbell, Wallet, Car } from "lucide-react";
 
 export interface Project {
   slug: string;
@@ -17,10 +17,35 @@ export interface Project {
   solution: string;
   results: { label: string; value: string }[];
   appStoreUrl?: string;
+  playStoreUrl?: string;
   liveUrl?: string;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "alygo-rides",
+    title: "Alygo – Ride-Hailing & Driver Ecosystem",
+    category: "Ride-Hailing & Mobility",
+    description: "Full-scale on-demand ride-hailing and driver ecosystem. Engineered with real-time GPS fleet tracking, interactive multi-ride tier selection (Ride, Scooty, Moto, Comfort), dynamic fare estimation, geocoded custom address management, and instant digital payments.",
+    tags: ["Flutter", "Dart", "Google Maps SDK", "WebSockets", "Firebase", "REST API", "Geofencing"],
+    icon: <Car className="w-5 h-5" />,
+    imagePlaceholder: "ALYGO RIDE HAILING & DRIVER APP UI",
+    imageUrl: "/alygo_rides.png",
+    client: "Alygo Mobility",
+    timeline: "4 Months",
+    role: "Lead Mobile Architect & Flutter Developer",
+    challenge: "Architecting a high-performance dual-sided mobility ecosystem with sub-second driver live location sync, smooth map rendering across multiple ride categories (Ride, Scooty, Moto, Comfort), precise address geocoding, and resilient trip lifecycle state management under fluctuating network connectivity.",
+    solution: "Engineered high-performance Flutter mobile applications with Google Maps SDK integration, optimized WebSocket listeners for instant trip dispatch and live polyline routing, seamless multi-method payment checkout, and custom private residence/public place location management.",
+    content: "Alygo is a modern, reliable on-demand ride-hailing and driver ecosystem built under the philosophy 'Ride. Earn. Repeat.' for a smarter way to move.\n\nThe platform unifies passenger booking with driver trip management: riders can effortlessly choose multiple vehicle types (Ride, Scooty, Moto, Comfort) with transparent upfront pricing, track driver locations live on an interactive map, and manage saved places and secure payment methods.\n\nCrafted with 60fps Flutter animations, resilient background location tracking, and real-time state synchronization, Alygo delivers a seamless, dependable urban transit and earning experience on iOS and Android.",
+    appStoreUrl: "https://apps.apple.com/id/app/alygo-driver/id6751972424",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.tm.ride&hl=en",
+    results: [
+      { label: "Trips Completed", value: "75K+" },
+      { label: "Location Accuracy", value: "99.8%" },
+      { label: "Dispatch Latency", value: "<150ms" },
+      { label: "App Rating", value: "4.9★" },
+    ],
+  },
   {
     slug: "cashflow-iq",
     title: "CashFlowIQ – Smart Financial Tracking & Intelligence",

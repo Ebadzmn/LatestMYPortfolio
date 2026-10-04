@@ -86,15 +86,26 @@ export function Navbar() {
         </a>
       </nav>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <div className="hidden lg:flex items-center gap-2 bg-zinc-100 px-4 py-2 text-xs font-mono text-zinc-600 rounded-sm gsap-nav">
           <div className="w-2 h-2 rounded-full border border-zinc-400 flex items-center justify-center">
             <div className="w-1 h-1 rounded-full bg-zinc-400" />
           </div>
           {time}
         </div>
+        <a 
+          href="https://drive.google.com/file/d/1rNErwdeqlBfOWh6ihjsrxsRHPFvJ1aYU/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:inline-block"
+        >
+          <Button variant="secondary" className="gsap-nav !border-zinc-300 hover:!border-zinc-900 !px-3.5">
+            CV
+            <ArrowUpRight className="w-3 h-3" />
+          </Button>
+        </a>
         <a href="#connect">
-          <Button variant="secondary" className="gsap-nav !border-zinc-900">
+          <Button variant="primary" className="gsap-nav !bg-zinc-900 !text-white hover:!bg-black">
             Connect
             <ArrowUpRight className="w-3 h-3" />
           </Button>

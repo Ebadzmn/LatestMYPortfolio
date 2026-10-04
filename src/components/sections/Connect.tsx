@@ -6,12 +6,10 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
 const socialLinks = [
-  { name: "GITHUB", url: "#" },
-  { name: "LINKEDIN", url: "#" },
-  { name: "HUGGING FACE", url: "#" },
-  { name: "X / TWITTER", url: "#" },
-  { name: "INSTAGRAM", url: "#" },
-  { name: "MEDIUM", url: "#" },
+  { name: "GITHUB", url: "https://github.com/ebadzmn" },
+  { name: "LINKEDIN", url: "https://www.linkedin.com/in/ebaduzzaman-ebad/" },
+  { name: "HUGGING FACE", url: "https://huggingface.co" },
+  { name: "X / TWITTER", url: "https://x.com" },
 ];
 
 export function Connect() {
@@ -76,16 +74,20 @@ export function Connect() {
               <a 
                 key={link.name} 
                 href={link.url}
-                className="border border-zinc-200 bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 rounded-sm hover:border-zinc-400 hover:text-zinc-900 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-zinc-200 bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-600 rounded-sm hover:border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 shadow-sm"
               >
                 {link.name}
               </a>
             ))}
             <a 
-              href="#"
-              className="bg-zinc-900 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white rounded-sm hover:bg-zinc-800 transition-colors"
+              href="https://drive.google.com/file/d/1rNErwdeqlBfOWh6ihjsrxsRHPFvJ1aYU/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-900 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white rounded-sm hover:bg-black transition-all duration-300 shadow-md hover:scale-105"
             >
-              RESUME
+              VIEW CV / RESUME ↗
             </a>
           </div>
         </div>

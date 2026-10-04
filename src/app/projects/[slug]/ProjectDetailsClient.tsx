@@ -18,6 +18,14 @@ function AppleIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function PlayStoreIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.22 2.22 0 0 1-.61-1.573V3.387c0-.59.22-1.154.609-1.573zm11.238 11.241l2.42 2.42-12.022 6.942 9.602-9.362zm0-2.11L5.245 1.583 17.267 8.525l-2.42 2.42zm1.055 1.055l3.297-1.904a2.223 2.223 0 0 1 0 3.808l-3.297-1.904z" />
+    </svg>
+  );
+}
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function ProjectDetailsClient({ project }: { project: Project }) {
@@ -220,6 +228,23 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
                   <ExternalLink className="w-4 h-4 ml-1 text-zinc-400 group-hover:text-white transition-colors" />
                 </a>
               )}
+
+              {project.playStoreUrl && (
+                <a
+                  href={project.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-black hover:bg-zinc-900 text-white px-5 py-2.5 rounded-xl border border-zinc-700/80 shadow-xl hover:shadow-2xl hover:border-zinc-500 transition-all duration-300 group hover:scale-105"
+                  title="Get it on Google Play"
+                >
+                  <PlayStoreIcon className="w-6 h-6 fill-current text-white shrink-0 group-hover:scale-110 transition-transform" />
+                  <div className="flex flex-col text-left leading-none">
+                    <span className="text-[9px] text-zinc-400 font-medium uppercase tracking-wider">Get it on</span>
+                    <span className="text-sm md:text-base font-bold tracking-tight text-white mt-0.5">Google Play</span>
+                  </div>
+                  <ExternalLink className="w-4 h-4 ml-1 text-zinc-400 group-hover:text-white transition-colors" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -238,23 +263,38 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
               </div>
             </div>
 
-            {project.appStoreUrl ? (
-              <a
-                href={project.appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-6 right-6 flex items-center gap-2.5 bg-black/90 hover:bg-black text-white backdrop-blur-md px-4 py-2.5 rounded-xl border border-zinc-600 hover:border-white transition-all shadow-xl hover:scale-105 z-10 group/live"
-              >
-                <AppleIcon className="w-4 h-4 fill-current text-white group-hover/live:scale-110 transition-transform" />
-                <span className="text-[11px] font-bold uppercase tracking-wider text-white">Download on iOS</span>
-                <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover/live:text-white" />
-              </a>
-            ) : (
-              <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-zinc-900/90 text-white backdrop-blur-md px-4 py-2 rounded-sm border border-zinc-700/80 z-10 shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Live Project Mockup</span>
-              </div>
-            )}
+            <div className="absolute bottom-6 right-6 flex items-center gap-2 z-10">
+              {project.appStoreUrl && (
+                <a
+                  href={project.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-black/90 hover:bg-black text-white backdrop-blur-md px-3.5 py-2 rounded-xl border border-zinc-600 hover:border-white transition-all shadow-xl hover:scale-105 group/live"
+                >
+                  <AppleIcon className="w-4 h-4 fill-current text-white group-hover/live:scale-110 transition-transform" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-white">App Store</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover/live:text-white" />
+                </a>
+              )}
+              {project.playStoreUrl && (
+                <a
+                  href={project.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-black/90 hover:bg-black text-white backdrop-blur-md px-3.5 py-2 rounded-xl border border-zinc-600 hover:border-white transition-all shadow-xl hover:scale-105 group/live"
+                >
+                  <PlayStoreIcon className="w-4 h-4 fill-current text-white group-hover/live:scale-110 transition-transform" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-white">Google Play</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover/live:text-white" />
+                </a>
+              )}
+              {!project.appStoreUrl && !project.playStoreUrl && (
+                <div className="flex items-center gap-2 bg-zinc-900/90 text-white backdrop-blur-md px-4 py-2 rounded-sm border border-zinc-700/80 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Live Project Mockup</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -401,7 +441,31 @@ export function ProjectDetailsClient({ project }: { project: Project }) {
                   className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-black text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow hover:scale-105 shrink-0"
                 >
                   <AppleIcon className="w-4 h-4 fill-current" />
-                  <span>Download App</span>
+                  <span>Download iOS App</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
+
+            {project.playStoreUrl && (
+              <div className={`border-t border-zinc-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 rounded-lg border shadow-sm ${project.appStoreUrl ? "mt-4 pt-4" : "pt-6"}`}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-950 flex items-center justify-center text-white">
+                    <PlayStoreIcon className="w-5 h-5 fill-current" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-zinc-900">Get it on Android Devices</h4>
+                    <p className="text-xs text-zinc-500">Official release available on Google Play Store</p>
+                  </div>
+                </div>
+                <a
+                  href={project.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-black text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow hover:scale-105 shrink-0"
+                >
+                  <PlayStoreIcon className="w-4 h-4 fill-current" />
+                  <span>Get on Play Store</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
